@@ -31,8 +31,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-This code is by no means "perfect". When I have time I may remove the current need for the user to add an intercept to the data.
-Another apparant problem is that this estimator does not pass sklearn's check_estimator function. I beleve this is because check_estimator attempts to pass a y veactor containg {0, 1, 2} to check it works in a multinomial classifiaction system. This won't work because the original function was written using an instance of a binomial logit model smf.Logit(y, X).
+There are some obvious areas for improvement in this code. When I have time I may remove the current need for the user to add an intercept to the data. Another apparant problem is that this estimator does not pass sklearn's check_estimator function. I beleve this is because check_estimator attempts to pass a y veactor containg {0, 1, 2} to check it works in a multinomial classifiaction system. This won't work because the original function was written using an instance of a binomial logit model smf.Logit(y, X).
 
 ## License
 [cc]
