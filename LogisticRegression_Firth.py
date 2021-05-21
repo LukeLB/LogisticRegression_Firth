@@ -16,22 +16,6 @@ from scipy import stats
 import statsmodels.api as smf
 
 def firth_likelihood(beta, logit):
-    """
-    Firth's penalized liklihood function
-
-    Parameters
-    ----------
-    beta : TYPE
-        DESCRIPTION.
-    logit : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    TYPE
-        DESCRIPTION.
-
-    """
     return -(logit.loglike(beta) + 0.5*np.log(np.linalg.det(-logit.hessian(beta))))
 
 def null_fit_firth(y, X, start_vec = None, step_limit=1000, convergence_limit=0.0001):
