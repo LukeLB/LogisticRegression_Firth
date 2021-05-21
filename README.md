@@ -1,6 +1,6 @@
 # LogisticRegression_Firth
 
-This set of code uses John Lees' implementation of Firth's penalised logistic regression into a sklearn estimator class. 
+This set of code uses John Lees' implementation of Firth's penalised logistic regression to make an sklearn estimator class. 
 I've used this succesfully inside sklearn and with other packages e.g. SHAP. You can find John's original code here
 https://gist.github.com/johnlees/3e06380965f367e4894ea20fbae2b90d. 
 
@@ -31,7 +31,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-There are some obvious areas for improvement in this code. When I have time I may remove the current need for the user to add an intercept to the data. Another apparant problem is that this estimator does not pass sklearn's check_estimator function. I beleve this is because check_estimator attempts to pass a y veactor containg {0, 1, 2} to check it works in a multinomial classifiaction system. This won't work because the original function was written using an instance of a binomial logit model smf.Logit(y, X).
+There are some obvious areas for improvement in this code. When I have time I may remove the current need for the user to add an intercept to the data. Another apparant problem is that this estimator does not pass sklearn's check_estimator function. I believe this is because check_estimator attempts to pass a y vector containg {0, 1, 2} to check it works in a multinomial classifiaction system. This won't work because the original function was written using an instance of a binomial logit model smf.Logit(y, X).
 
 ## License
 [cc]
