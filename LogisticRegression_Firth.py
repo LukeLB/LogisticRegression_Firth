@@ -16,9 +16,53 @@ from scipy import stats
 import statsmodels.api as smf
 
 def firth_likelihood(beta, logit):
+    """
+    Firth's penalized liklihood function
+
+    Parameters
+    ----------
+    beta : TYPE
+        DESCRIPTION.
+    logit : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    """
     return -(logit.loglike(beta) + 0.5*np.log(np.linalg.det(-logit.hessian(beta))))
 
 def null_fit_firth(y, X, start_vec = None, step_limit=1000, convergence_limit=0.0001):
+    """
+    Computes the null model in the likelihood ratio test 
+
+    Parameters
+    ----------
+    X : array-like of shape (n_samples, n_features)
+        Training vector, where n_samples is the number of samples and
+        n_features is the number of features.  Make sure X has an intercept 
+        term (column of ones).
+    y : array-like of shape (n_samples,)
+        Target vector relative to X. Please note this function only currently works for 
+        binomial regression so output values of {0, 1} will work while 
+        {0, 1, 2} will not. 
+    start_vec : int or None, optional
+        starting vector The default is None.
+    step_limit : TYPE, optional
+        Max number of steps before MLE termination. The default is 1000.
+    convergence_limit : TYPE, optional
+        Minimum difference between MLE's. The default is 0.0001.
+
+    Returns
+    -------
+    return_fit :  
+            intercept: Intercept coeffcient 
+            beta: list of beta coeffcients  
+            bse: coeffcient standard errors 
+            fitll: fit log-likelihood
+    """
 
     logit_model = smf.Logit(y, X)
     
@@ -152,6 +196,12 @@ class Firth_LogisticRegression(LogisticRegression,
         -------
         self
             Fitted estimator.
+            
+            self.fitll_ : fit log-likelihood
+            self.intercept_ : intercept
+            self.coef_ : coeffcients not including intercept (used in all other sklearn classes )
+            self.beta_ : coeffcients including intercept (used in wald and LR tests)
+            self.bse_ : standard errors
 
         """
         X, y = check_X_y(X, y)
