@@ -1,7 +1,7 @@
 # LogisticRegression_Firth
 
 This set of code uses John Lees' implementation of Firth's penalised logistic regression into a sklearn estimator class. 
-I've used this succesfully inside sklearn and with other packages e.g. SHAP. You can find John's originl code here
+I've used this succesfully inside sklearn and with other packages e.g. SHAP. You can find John's original code here
 https://gist.github.com/johnlees/3e06380965f367e4894ea20fbae2b90d. 
 
 ## Usage
@@ -11,7 +11,7 @@ import LogisticRegression_Firth as FLR
 
 #create fitted estimator 
 FLR = FLR.Firth_LogisticRegression()
-FLR_fit = FLR.fit(X_train, y) # make sure training data has an intercpet (column of 1's)
+FLR_fit = FLR.fit(X_train, y) # make sure training data has an intercept (column of 1's)
 
 #perform stat test. Either likelihood ratio test,
 FLR.test_likelihoodratio(X_train, y)
